@@ -16,8 +16,8 @@ class MainActivity : AppCompatActivity() {
             |Februar-Nacht
             |
             |Der kalte Mond hat eine Delle.
-            |Die Sterne glimmen trüb nd matt.
-            |Die Nacht bringt mch an jene Schwelle,
+            |Die Sterne glimmen trüb und matt.
+            |Die Nacht bringt mich an jene Schwelle,
             |wo ich das triste Urteil fälle:
             |Ach Februar, ich hab dich satt. 
             |Mach Platz für Sonnenschein und Blüten! 
