@@ -12,6 +12,21 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // TODO Ändere die Textausgabe von "Quatsch" zu einem Text deiner Wahl
-        findViewById<TextView>(R.id.textView).text = "Quatsch"
+        findViewById<TextView>(R.id.textView).text = """
+            |Februar-Nacht
+            |
+            |Der kalte Mond hat eine Delle.
+            |Die Sterne glimmen trüb nd matt.
+            |Die Nacht bringt mch an jene Schwelle,
+            |wo ich das triste Urteil fälle:
+            |Ach Februar, ich hab dich satt. 
+            |Mach Platz für Sonnenschein und Blüten! 
+            |Die Gärten sollen auferstehn, 
+            |das Grün in wildem Wachstum wüten, 
+            |die Vögel zwitschern und auch brüten, 
+            |ach Februar! Wär das nicht schön?
+            |
+            |- von Hans Retep -
+        """.trimMargin()
     }
 }
