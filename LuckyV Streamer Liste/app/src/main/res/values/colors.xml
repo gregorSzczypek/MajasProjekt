@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    //for text
+    <color name="luckyv_yellow">#FFC107</color>
+    <color name="black">#000000</color>
+    //for buttons
+    <color name="luckyv_white">#FFFFFF</color>
+    //background
+    <color name="app_background_light">#FFFFFF</color>
+    <color name="app_background_dark">#000000</color>
+</resources>
