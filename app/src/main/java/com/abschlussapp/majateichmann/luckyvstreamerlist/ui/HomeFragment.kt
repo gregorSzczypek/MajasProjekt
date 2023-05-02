@@ -9,9 +9,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CheckBox
 import androidx.fragment.app.viewModels
-import androidx.room.Query
 import com.abschlussapp.majateichmann.luckyvstreamerlist.R
-import com.abschlussapp.majateichmann.luckyvstreamerlist.adapter.Adapter
+import com.abschlussapp.majateichmann.luckyvstreamerlist.adapter.LiveAdapter
 import com.abschlussapp.majateichmann.luckyvstreamerlist.data.datamodels.Streamer
 import com.abschlussapp.majateichmann.luckyvstreamerlist.data.datamodels.StreamerList
 import com.abschlussapp.majateichmann.luckyvstreamerlist.databinding.FragmentHomeBinding
@@ -58,17 +57,17 @@ class HomeFragment : Fragment() {
         // Verbesserte Performance bei fixer Listengröße
         binding.rvStreamer.setHasFixedSize(true)
 
-        // Die Variable streamer wird beobachtet und bei einer Änderung wird der Adapter der
+        // Die Variable streamer wird beobachtet und bei einer Änderung wird der LiveAdapter der
         // Recyclerview neu gesetzt.
         viewModel.streamer.observe(
             viewLifecycleOwner
         ) {
-            binding.rvStreamer.adapter = Adapter(context,StreamerList)
+            binding.rvStreamer.adapter = LiveAdapter(context,StreamerList)
         }
 
         val streamerList = listOf<Streamer>()
-        val adapter = Adapter(requireContext(), streamerList)
-        binding.tvAutocompleteSearch.setAdapter(adapter)
+        val liveAdapter = LiveAdapter(requireContext(), streamerList)
+        binding.tvAutocompleteSearch.setAdapter(liveAdapter)
 
         val filterButton = view.findViewById<Button>(R.id.filter_button)
         filterButton.setOnClickListener {
