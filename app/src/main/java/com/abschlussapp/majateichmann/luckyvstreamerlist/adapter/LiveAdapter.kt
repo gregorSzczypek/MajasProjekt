@@ -53,6 +53,9 @@ private val dataset: List<Streamer>
             holder.tvCharname.text = streamer.ic_name
         }
 
+//        holder.btnRefresh.setOnClickListener{
+//
+//        }
     }
 
     /**
