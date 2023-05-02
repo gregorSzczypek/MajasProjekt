@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.room.Query
 import com.abschlussapp.majateichmann.luckyvstreamerlist.R
 import com.abschlussapp.majateichmann.luckyvstreamerlist.adapter.Adapter
+import com.abschlussapp.majateichmann.luckyvstreamerlist.data.datamodels.Streamer
 import com.abschlussapp.majateichmann.luckyvstreamerlist.data.datamodels.StreamerList
 import com.abschlussapp.majateichmann.luckyvstreamerlist.databinding.FragmentHomeBinding
 import com.google.android.material.chip.Chip
@@ -65,7 +66,7 @@ class HomeFragment : Fragment() {
             binding.rvStreamer.adapter = Adapter(context,StreamerList)
         }
 
-        val streamerList = listOf("Deutschland", "Österreich", "Schweiz", "USA", "Kanada", "Frankreich")
+        val streamerList = listOf<Streamer>()
         val adapter = Adapter(requireContext(), streamerList)
         binding.tvAutocompleteSearch.setAdapter(adapter)
 

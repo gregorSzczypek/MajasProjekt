@@ -3,6 +3,7 @@ package com.abschlussapp.majateichmann.luckyvstreamerlist.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.abschlussapp.majateichmann.luckyvstreamerlist.data.datamodels.Streamer
 
@@ -10,7 +11,7 @@ import com.abschlussapp.majateichmann.luckyvstreamerlist.data.datamodels.Streame
 class Adapter(
 private val context: Context,
 private val dataset: List<Streamer>
-) : RecyclerView.Adapter<Adapter.ItemViewHolder>() {
+) : RecyclerView.Adapter<Adapter.ItemViewHolder>(), ListAdapter {
 
     class ItemViewHolder(val binding: StreamerItemBinding) : RecyclerView.ViewHolder(binding.root)
 
