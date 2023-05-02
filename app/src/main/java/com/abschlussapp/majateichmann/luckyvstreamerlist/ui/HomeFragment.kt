@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.CheckBox
 import androidx.fragment.app.viewModels
 import com.abschlussapp.majateichmann.luckyvstreamerlist.R
+import com.abschlussapp.majateichmann.luckyvstreamerlist.adapter.FilterAdapter
 import com.abschlussapp.majateichmann.luckyvstreamerlist.adapter.LiveAdapter
 import com.abschlussapp.majateichmann.luckyvstreamerlist.data.datamodels.Streamer
 import com.abschlussapp.majateichmann.luckyvstreamerlist.data.datamodels.StreamerList
@@ -17,11 +18,6 @@ import com.abschlussapp.majateichmann.luckyvstreamerlist.databinding.FragmentHom
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HomeFragment : Fragment() {
 
     // Hier wird das ViewModel, in dem die Logik stattfindet, geholt
@@ -30,6 +26,10 @@ class HomeFragment : Fragment() {
     // Das binding für das QuizFragment wird deklariert
     private lateinit var binding: FragmentHomeBinding
 
+    /**
+     * Lifecycle Funktion onCreateView
+     * Hier wird das binding initialisiert und das Layout gebaut
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -55,61 +55,62 @@ class HomeFragment : Fragment() {
         }
 
         // Verbesserte Performance bei fixer Listengröße
-        binding.rvStreamer.setHasFixedSize(true)
+        binding.rvStreamerOnline.setHasFixedSize(true)
+        binding.rvStreamerOffline.setHasFixedSize(true)
 
         // Die Variable streamer wird beobachtet und bei einer Änderung wird der LiveAdapter der
         // Recyclerview neu gesetzt.
         viewModel.streamer.observe(
             viewLifecycleOwner
         ) {
-            binding.rvStreamer.adapter = LiveAdapter(context,StreamerList)
+            binding.rvStreamerOnline.adapter = LiveAdapter(it)
+            binding.rvStreamerOffline.adapter = LiveAdapter(it)
         }
 
-        val streamerList = listOf<Streamer>()
-        val liveAdapter = LiveAdapter(requireContext(), streamerList)
-        binding.tvAutocompleteSearch.setAdapter(liveAdapter)
-
-        val filterButton = view.findViewById<Button>(R.id.filter_button)
-        filterButton.setOnClickListener {
-            showFilterDialog()
-        }
+//        val streamerList = listOf<Streamer>()
+//        val filterAdapter = FilterAdapter(requireContext(), streamerList)
+//        binding.tvAutocompleteSearch.setAdapter(filterAdapter)
+//
+//        val filterButton = view.findViewById<Button>(R.id.filter_button)
+//        filterButton.setOnClickListener {
+//            showFilterDialog()
+//        }
+//    }
+//
+//    private fun showFilterDialog() {
+//        val dialogView = layoutInflater.inflate(R.layout.filter_layout, null)
+//        val chipGroup = dialogView.findViewById<ChipGroup>(R.id.chip_group)
+//        val option1Checkbox = dialogView.findViewById<CheckBox>(R.id.checkbox_option_1)
+//        val option2Checkbox = dialogView.findViewById<CheckBox>(R.id.checkbox_option_2)
+//        val applyButton = dialogView.findViewById<Button>(R.id.button_apply)
+//
+//        // Set up the chip group with your filter options
+//        val filterOptions = listOf("Option A", "Option B", "Option C")
+//        for (option in filterOptions) {
+//            val chip = Chip(requireContext())
+//            chip.text = option
+//            chipGroup.addView(chip)
+//        }
+//
+//        // Set up the apply button to save the selected filter options and dismiss the dialog
+//        applyButton.setOnClickListener {
+//            val selectedOptions = mutableListOf<String>()
+//            if (option1Checkbox.isChecked) {
+//                selectedOptions.add("Option 1")
+//            }
+//            if (option2Checkbox.isChecked) {
+//                selectedOptions.add("Option 2")
+//            }
+//
+//            // Apply the filter and dismiss the dialog
+//            applyFilter(selectedOptions)
+//            filterDialog.dismiss()
+//        }
+//
+//        // Create and show the filter dialog
+//        val builder = AlertDialog.Builder(requireContext())
+//        builder.setView(dialogView)
+//        filterDialog = builder.create()
+//        filterDialog.show()
     }
-
-    private fun showFilterDialog() {
-        val dialogView = layoutInflater.inflate(R.layout.filter_layout, null)
-        val chipGroup = dialogView.findViewById<ChipGroup>(R.id.chip_group)
-        val option1Checkbox = dialogView.findViewById<CheckBox>(R.id.checkbox_option_1)
-        val option2Checkbox = dialogView.findViewById<CheckBox>(R.id.checkbox_option_2)
-        val applyButton = dialogView.findViewById<Button>(R.id.button_apply)
-
-        // Set up the chip group with your filter options
-        val filterOptions = listOf("Option A", "Option B", "Option C")
-        for (option in filterOptions) {
-            val chip = Chip(requireContext())
-            chip.text = option
-            chipGroup.addView(chip)
-        }
-
-        // Set up the apply button to save the selected filter options and dismiss the dialog
-        applyButton.setOnClickListener {
-            val selectedOptions = mutableListOf<String>()
-            if (option1Checkbox.isChecked) {
-                selectedOptions.add("Option 1")
-            }
-            if (option2Checkbox.isChecked) {
-                selectedOptions.add("Option 2")
-            }
-
-            // Apply the filter and dismiss the dialog
-            applyFilter(selectedOptions)
-            filterDialog.dismiss()
-        }
-
-        // Create and show the filter dialog
-        val builder = AlertDialog.Builder(requireContext())
-        builder.setView(dialogView)
-        filterDialog = builder.create()
-        filterDialog.show()
-    }
-
 }

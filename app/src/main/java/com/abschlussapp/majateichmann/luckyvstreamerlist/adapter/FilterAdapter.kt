@@ -4,6 +4,7 @@ import android.content.Context
 import android.widget.ArrayAdapter
 import android.widget.Filter
 import android.widget.Filterable
+import com.abschlussapp.majateichmann.luckyvstreamerlist.data.datamodels.Streamer
 import java.util.Locale
 
 //Diese Klasse verwendet eine List-Implementierung als Datenquelle und implementiert die Filterable-Schnittstelle, um die automatische Vervollständigungsfunktion zu ermöglichen:

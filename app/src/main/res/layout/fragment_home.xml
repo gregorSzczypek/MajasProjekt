@@ -174,46 +174,73 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_live_offline"
+        <TextView
+            android:id="@+id/tv_streamers_online"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/streamers_live"
+            android:textSize="15dp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cl_players_online">
+            app:layout_constraintTop_toBottomOf="@+id/cl_players_online" />
 
-            <TextView
-                android:id="@+id/tv_streamers_online"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_on"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_streamers_online"
+            tools:context=".ui.HomeFragment">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_Streamer_online"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/streamers_live"
-                android:textSize="15dp"
-                android:textStyle="bold"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/list_item_live"/>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cl_rv_live"
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_streamers_offline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/streamers_live"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_on" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_off"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_streamers_offline"
+            tools:context=".ui.HomeFragment">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_Streamer_offline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_streamers_online">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_Streamer"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:context=".ui.list_item_live"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/list_item_offline"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </layout>
