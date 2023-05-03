@@ -1,8 +1,6 @@
 package com.abschlussapp.majateichmann.luckyvstreamerlist
 
-import android.content.Context
 import android.os.Bundle
-import android.util.AttributeSet
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -13,16 +11,30 @@ import com.abschlussapp.majateichmann.luckyvstreamerlist.databinding.ActivityMai
  */
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
+    //apiLoading auf true setzen -> Progressbar noch sichtbar
+    private var apiLoading: Boolean = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+    //Wenn API noch nicht geladen: Header nicht sichtbar
+    if(apiLoading) {
+        binding.clAppHeader.visibility = View.GONE
+    }else
+    {
+        //Header wird angezeigt, wenn Api fertig geladen
+        binding.clAppHeader.visibility = View.VISIBLE
     }
+}
+    fun onApiLoading(){
+        //ApiLoading wird auf false gesetzt, wenn api fertig geladen
+        apiLoading = false
+        //Header wird angezeigt, wenn Api fertig geladen
+        binding.clAppHeader.visibility = View.VISIBLE
 
-    override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
+        //todo: Navigiere zu HomeFragment
+//        findNavController(R.id.nav_host_fragment).navigate(R.id.action_startFragment_to_homeFragment)
 
-        //todo: wenn api noch nicht komplett geladen, schalte "cl_app_header" visibility auf gone(nicht sichtbar)
-        //todo: wenn api fertig geladen (also screen 2 zu sehen) schalte "cl_app_header" visibility auf visible (sichtbar)
-
-        return super.onCreateView(name, context, attrs)
     }
 }

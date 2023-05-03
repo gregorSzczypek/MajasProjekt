@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import com.abschlussapp.majateichmann.luckyvstreamerlist.R
 import com.abschlussapp.majateichmann.luckyvstreamerlist.data.remote.StreamerApi
 import kotlinx.coroutines.launch
@@ -72,6 +74,8 @@ class StartFragment : Fragment() {
                 // Wenn der Abruf erfolgreich war, wird der Fortschrittsbalken ausgeblendet.
                 progressBar.visibility = View.GONE
                 // TODO: Verarbeite die "streamers" Daten
+
+                //TODO: navigation von startfragment zu homefragment
             } catch (e: Exception) {
                 // Wenn ein Fehler aufgetreten ist, wird der Fortschrittsbalken ausgeblendet und eine Fehlermeldung angezeigt.
                 progressBar.visibility = View.GONE
