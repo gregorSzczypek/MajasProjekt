@@ -6,39 +6,77 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import androidx.lifecycle.lifecycleScope
 import com.abschlussapp.majateichmann.luckyvstreamerlist.R
 import com.abschlussapp.majateichmann.luckyvstreamerlist.data.remote.StreamerApi
+import kotlinx.coroutines.launch
+
+//class StartFragment : Fragment() {
+//    //Progressbar implementieren
+//    private lateinit var progressBar: ProgressBar
+//
+//    override fun onCreateView(
+//        inflater: LayoutInflater, container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View? {
+//        // Inflate the layout for this fragment
+//        val view = inflater.inflate(R.layout.fragment_start, container, false)
+//        progressBar = view.findViewById(R.id.progressBar)
+//        return view
+//    }
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//        loadData()
+//    }
+//
+//    private fun loadData() {
+//        GlobalScope.launch(Dispatchers.IO) {
+//            val streamers = StreamerApi
+//            // process streamers data here
+//        }
+//    }
+//
+//    private fun updateProgress(bytesRead: Int, contentLength: Int) {
+//        if (contentLength == -1) {
+//            progressBar.isIndeterminate = true
+//        } else {
+//            val percent = (bytesRead.toDouble() / contentLength.toDouble()) * 100
+//            progressBar.progress = percent.toInt()
+//        }
+//    }
+//}
 
 class StartFragment : Fragment() {
+
+    private lateinit var progressBar: ProgressBar
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_start, container, false)
+        val view = inflater.inflate(R.layout.fragment_start, container, false)
+        progressBar = view.findViewById(R.id.progressBar)
+        return view
+    }
 
-//        val progressBar = findViewById<ProgressBar>(R.id.progressBar)
-//
-//// Aktivieren Sie die ProgressBar
-//        progressBar.visibility = View.VISIBLE
-//
-//// Führen Sie den API-Aufruf aus
-//        StreamerApi.execute(object : Callback {
-//            override fun onSuccess(result: ApiResponse) {
-//                // Aktualisieren Sie die ProgressBar
-//                progressBar.progress = 100
-//
-//                // Verstecken Sie die ProgressBar
-//                progressBar.visibility = View.GONE
-//            }
-//
-//            override fun onError(error: String) {
-//                // Verstecken Sie die ProgressBar
-//                progressBar.visibility = View.GONE
-//            }
-//        }
-//        )
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        // Coroutine starten, um die Streamer-Daten von der API abzurufen
+        lifecycleScope.launch {
+            progressBar.visibility = View.VISIBLE
+            try {
+                // Die "getStreamers()" Funktion wird asynchron aufgerufen und das Ergebnis wird in "streamers" gespeichert.
+                val streamers = StreamerApi.retrofitService.getStreamers()
+                // Wenn der Abruf erfolgreich war, wird der Fortschrittsbalken ausgeblendet.
+                progressBar.visibility = View.GONE
+                // TODO: Verarbeite die "streamers" Daten
+            } catch (e: Exception) {
+                // Wenn ein Fehler aufgetreten ist, wird der Fortschrittsbalken ausgeblendet und eine Fehlermeldung angezeigt.
+                progressBar.visibility = View.GONE
+                // TODO: Zeige einen Fehler-Dialog oder eine Fehlermeldung an.
+            }
+        }
     }
 }

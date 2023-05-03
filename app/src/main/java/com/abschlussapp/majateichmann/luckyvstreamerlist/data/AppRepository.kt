@@ -22,7 +22,7 @@ class AppRepository(private val api: StreamerApi, private val database: Streamer
 
     suspend fun getStreamer(){
         try{
-            val streamerData = api.retrofitSevice.getStreamer().streamer
+            val streamerData = api.retrofitService.getStreamers().streamer
             database.streamerDao.insertAll(streamerData)
         }catch(e: Exception){
             Log.e(TAG,"Error loading Data from API: $e")

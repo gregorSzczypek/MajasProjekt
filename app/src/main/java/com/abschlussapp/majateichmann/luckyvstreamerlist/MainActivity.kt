@@ -20,8 +20,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
 
-        //todo: wenn api noch nicht komplett geladen, schalte appname+logo visibility auf gone(nicht sichtbar)
-        //todo: wenn api fertig geladen (also screen 2 zu sehen) schalte appname+logo visibility auf visible (sichtbar)
+        //todo: wenn api noch nicht komplett geladen, schalte "cl_app_header" visibility auf gone(nicht sichtbar)
+        //todo: wenn api fertig geladen (also screen 2 zu sehen) schalte "cl_app_header" visibility auf visible (sichtbar)
 
         return super.onCreateView(name, context, attrs)
     }
