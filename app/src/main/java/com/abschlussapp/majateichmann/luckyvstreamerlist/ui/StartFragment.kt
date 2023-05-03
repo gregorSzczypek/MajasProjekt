@@ -1,15 +1,23 @@
 package com.abschlussapp.majateichmann.luckyvstreamerlist.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavDirections
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.abschlussapp.majateichmann.luckyvstreamerlist.R
+import com.abschlussapp.majateichmann.luckyvstreamerlist.adapter.LiveAdapter
+import com.abschlussapp.majateichmann.luckyvstreamerlist.data.datamodels.Streamer
 import com.abschlussapp.majateichmann.luckyvstreamerlist.data.remote.StreamerApi
 import kotlinx.coroutines.launch
 
@@ -74,12 +82,19 @@ class StartFragment : Fragment() {
                 // Wenn der Abruf erfolgreich war, wird der Fortschrittsbalken ausgeblendet.
                 progressBar.visibility = View.GONE
                 // TODO: Verarbeite die "streamers" Daten
+                val recyclerViewLive: RecyclerView = view.findViewById(R.id.rv_streamer_online)
+                recyclerViewLive.adapter = LiveAdapter(streamers.streamer)
+                val recyclerViewOffline: RecyclerView = view.findViewById(R.id.rv_Streamer_offline)
+                recyclerViewOffline.adapter = LiveAdapter(streamers.streamer)
 
                 //TODO: navigation von startfragment zu homefragment
+
             } catch (e: Exception) {
                 // Wenn ein Fehler aufgetreten ist, wird der Fortschrittsbalken ausgeblendet und eine Fehlermeldung angezeigt.
                 progressBar.visibility = View.GONE
-                // TODO: Zeige einen Fehler-Dialog oder eine Fehlermeldung an.
+
+                // Zeige einen Fehler-Dialog oder eine Fehlermeldung an.
+                Log.e(TAG,"Changing visibility of progressbar failed: $e")
             }
         }
     }

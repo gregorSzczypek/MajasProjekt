@@ -55,6 +55,7 @@
             android:id="@+id/cl_home_fragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cl_app_header"
             tools:context=".MainActivity">
@@ -66,10 +67,11 @@
                 android:layout_height="wrap_content"
                 app:defaultNavHost="true"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:navGraph="@navigation/nav_graph"
-                tools:context=".ui.HomeFragment" />
+                tools:context=".ui.HomeFragment"
+                tools:layout_editor_absoluteY="115dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
