@@ -8,7 +8,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.abschlussapp.majateichmann.luckyvstreamerlist.data.AppRepository
+import com.abschlussapp.majateichmann.luckyvstreamerlist.data.datamodels.Streamer
 import com.abschlussapp.majateichmann.luckyvstreamerlist.data.local.getDatabase
+import com.abschlussapp.majateichmann.luckyvstreamerlist.data.remote.LuckyV_StreamerApiService
 import com.abschlussapp.majateichmann.luckyvstreamerlist.data.remote.StreamerApi
 import kotlinx.coroutines.launch
 
@@ -16,8 +18,7 @@ enum class ApiStatus {LOADING, ERROR, DONE}
 
 const val TAG = "MainViewModel"
 
-class MainViewModel(application: Application) : ViewModel() {
-    //: AndroidViewModel(application)
+class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     // hier wird eine AppRepository Instanz erstellt, mit dem Parameter StreamerApi
     private val database = getDatabase(application)

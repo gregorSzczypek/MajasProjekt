@@ -12,11 +12,6 @@
         android:layout_height="match_parent"
         tools:context=".ui.HomeFragment">
 
-        <!--        <com.github.jinatonic.confetti.ConfettiView-->
-        <!--            android:id="@+id/confettiView"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="match_parent" />-->
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_header"
             android:layout_width="match_parent"
