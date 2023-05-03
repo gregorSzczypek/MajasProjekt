@@ -13,45 +13,6 @@
         tools:context=".ui.HomeFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/tv_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:text="@string/app_name"
-                android:textColor="@color/black"
-                android:textSize="24dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.5" />
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="72dp"
-                android:layout_height="64dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/luckyv_logo" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -60,7 +21,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cl_header">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/tv_description"
@@ -181,26 +142,27 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cl_players_online" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_on"
+        <GridLayout
+            android:id="@+id/grid_streamersLive"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:columnCount="3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_streamers_online"
             tools:context=".ui.HomeFragment">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_Streamer_online"
+                android:id="@+id/rv_streamer_online"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:listitem="@layout/list_item_live"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                tools:listitem="@layout/list_item_live" />
+        </GridLayout>
 
         <TextView
             android:id="@+id/tv_streamers_offline"
@@ -212,13 +174,14 @@
             android:textSize="15dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cl_on" />
+            app:layout_constraintTop_toBottomOf="@+id/grid_streamersLive" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_off"
+        <GridLayout
+            android:id="@+id/grid_streamersOffline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:columnCount="3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_streamers_offline"
@@ -228,12 +191,13 @@
                 android:id="@+id/rv_Streamer_offline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:listitem="@layout/list_item_offline"/>
+                tools:listitem="@layout/list_item_offline" />
+        </GridLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
