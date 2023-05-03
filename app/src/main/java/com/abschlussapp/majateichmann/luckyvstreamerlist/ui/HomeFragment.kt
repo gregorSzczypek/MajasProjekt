@@ -53,9 +53,9 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Bei einem Klick auf btnRefresh sollen die Informationen erneut abgerufen werden
-//        binding.btnRefresh.setOnClickListener {
-//            viewModel.loadData()
-//        }
+        binding.btnRefresh.setOnClickListener {
+            viewModel.loadData()
+        }
 
         // Verbesserte Performance bei fixer Listengröße
         binding.rvStreamerOnline.setHasFixedSize(true)
