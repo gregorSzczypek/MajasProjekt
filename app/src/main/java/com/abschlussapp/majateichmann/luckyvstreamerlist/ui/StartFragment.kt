@@ -27,7 +27,7 @@ import kotlinx.coroutines.launch
 
 class StartFragment : Fragment() {
 
-    private val viewModel: MainViewModel by activityViewModels()
+    private val viewModel: MainViewModel by viewModels()
     private lateinit var binding: FragmentStartBinding
 
     private lateinit var progressBar: ProgressBar
@@ -44,9 +44,6 @@ class StartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val streamerLiveAdapter = LiveAdapter(emptyList())
-        val streamerOfflineAdapter = OfflineAdapter(emptyList())
 
         viewModel.loading.observe(viewLifecycleOwner) {
             when (it) {

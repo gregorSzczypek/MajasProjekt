@@ -24,7 +24,7 @@ import com.google.android.material.chip.ChipGroup
 class HomeFragment : Fragment() {
 
     // Hier wird das ViewModel, in dem die Logik stattfindet, geholt
-    private val viewModel: MainViewModel by activityViewModels()
+    private val viewModel: MainViewModel by viewModels()
 
     // Das binding für das QuizFragment wird deklariert
     private lateinit var binding: FragmentHomeBinding
