@@ -7,18 +7,17 @@ import androidx.room.PrimaryKey
 @Entity
 class Streamer(
 
-    //"id"-Eigenschaft wird als Primärschlüssel für die Datenbanktabelle verwendet (einzigartig)
     @PrimaryKey(autoGenerate = true)
-    val id: Long,
+    val name: String,
 
     //Datenklasse besteht aus 7 Eigenschaften, wovon 6 als Parameter für den Konstruktor definiert sind
-    val name: String,
     val title: String,
-    val viewer: String,
     val logo_url: String,
     val live: Boolean,
-    val fraktion: String,
-    val ic_name: String
+    // weil fraktion in manchen fällen "null" ist
+    //todo
+//    val fraktion: Any,
+    val ic_name: String?
 )
 
 // Aufbau der API "LuckyV Streamer List"

@@ -79,8 +79,9 @@ class StartFragment : Fragment() {
             try {
                 // Die "getStreamers()" Funktion wird asynchron aufgerufen und das Ergebnis wird in "streamers" gespeichert.
                 val streamers = StreamerApi.retrofitService.getStreamers()
+
                 // Wenn der Abruf erfolgreich war, wird der Fortschrittsbalken ausgeblendet.
-                progressBar.visibility = View.GONE
+//                progressBar.visibility = View.GONE
                 // TODO: Verarbeite die "streamers" Daten
                 val recyclerViewLive: RecyclerView = view.findViewById(R.id.rv_streamer_online)
                 recyclerViewLive.adapter = LiveAdapter(streamers.streamer)
@@ -88,6 +89,10 @@ class StartFragment : Fragment() {
                 recyclerViewOffline.adapter = LiveAdapter(streamers.streamer)
 
                 //TODO: navigation von startfragment zu homefragment
+                if(progressBar.visibility == View.GONE){
+                    val navController = view.findNavController()
+                    navController.navigate(R.id.action_startFragment_to_homeFragment)
+                }
             } catch (e: Exception) {
                 // Wenn ein Fehler aufgetreten ist, wird der Fortschrittsbalken ausgeblendet und eine Fehlermeldung angezeigt.
                 progressBar.visibility = View.GONE

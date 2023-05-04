@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation.findNavController
 import com.abschlussapp.majateichmann.luckyvstreamerlist.databinding.ActivityMainBinding
 
 /**
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         binding.clAppHeader.visibility = View.VISIBLE
 
         //todo: Navigiere zu HomeFragment
-//        findNavController(R.id.nav_host_fragment).navigate(R.id.action_startFragment_to_homeFragment)
+//        findNavController(View).navigate(R.id.action_startFragment_to_homeFragment)
 
     }
 }
