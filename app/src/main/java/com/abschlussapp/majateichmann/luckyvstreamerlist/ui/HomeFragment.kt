@@ -11,6 +11,7 @@ import android.widget.CheckBox
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import com.abschlussapp.majateichmann.luckyvstreamerlist.MainActivity
 import com.abschlussapp.majateichmann.luckyvstreamerlist.R
 import com.abschlussapp.majateichmann.luckyvstreamerlist.adapter.FilterAdapter
 import com.abschlussapp.majateichmann.luckyvstreamerlist.adapter.LiveAdapter
@@ -61,6 +62,7 @@ class HomeFragment : Fragment() {
         // Bei einem Klick auf btnRefresh sollen die Informationen erneut abgerufen werden
         binding.btnRefresh.setOnClickListener {
             viewModel.loadData()
+            MainActivity().onApiLoading()
         }
         // Die Variable streamer wird beobachtet und bei einer Änderung wird der LiveAdapter der
         // Recyclerview neu gesetzt.
