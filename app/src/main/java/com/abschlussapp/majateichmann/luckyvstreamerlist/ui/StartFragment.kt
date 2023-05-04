@@ -88,7 +88,6 @@ class StartFragment : Fragment() {
                 recyclerViewOffline.adapter = LiveAdapter(streamers.streamer)
 
                 //TODO: navigation von startfragment zu homefragment
-
             } catch (e: Exception) {
                 // Wenn ein Fehler aufgetreten ist, wird der Fortschrittsbalken ausgeblendet und eine Fehlermeldung angezeigt.
                 progressBar.visibility = View.GONE
