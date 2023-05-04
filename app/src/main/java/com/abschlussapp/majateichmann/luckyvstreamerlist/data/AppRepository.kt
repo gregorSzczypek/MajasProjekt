@@ -18,7 +18,7 @@ class AppRepository(private val api: StreamerApi, private val database: Streamer
      * Diese Funktion ruft die Daten aus dem API Service ab und speichert die Antwort in der
      * Variable memes. Falls der Call nicht funktioniert, wird die Fehlermeldung geloggt
      */
-    val streamer: LiveData<List<Streamer>> = database.streamerDao.getAll()
+    val streamerList: LiveData<List<Streamer>> = database.streamerDao.getAll()
 
     suspend fun getStreamer(){
         try{

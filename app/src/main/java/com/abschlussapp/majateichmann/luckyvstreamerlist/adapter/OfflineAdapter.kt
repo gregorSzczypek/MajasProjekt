@@ -15,15 +15,14 @@ import com.abschlussapp.majateichmann.luckyvstreamerlist.data.remote.StreamerApi
 /**
  * Diese Klasse organisiert mithilfe der ViewHolder Klasse das Recycling
  */
-class LiveAdapter(
+class OfflineAdapter(
     private val dataset: List<Streamer>
-) : RecyclerView.Adapter<LiveAdapter.ItemViewHolder>() {
+) : RecyclerView.Adapter<OfflineAdapter.ItemViewHolder>() {
 
     /**
      * der ViewHolder umfasst die View und stellt einen Listeneintrag dar
      */
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val ivStreamVorschau: ImageView = itemView.findViewById(R.id.iv_stream_vorschau)
         val tvStreamername: TextView = itemView.findViewById(R.id.tv_streamername)
         val tvCharname: TextView = itemView.findViewById(R.id.tv_charname)
     }
@@ -33,7 +32,7 @@ class LiveAdapter(
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val itemLayout = LayoutInflater.from(parent.context)
-            .inflate(R.layout.list_item_live, parent, false)
+            .inflate(R.layout.list_item_offline, parent, false)
 
         return ItemViewHolder(itemLayout)
     }
@@ -54,8 +53,7 @@ class LiveAdapter(
         //streamer aus dem dataset holen
         var streamer = dataset[position]
 
-        if (streamer.live) {
-            holder.ivStreamVorschau.setImageResource(streamer.logo_url.toInt())
+        if (!streamer.live) {
             holder.tvStreamername.text = streamer.name
             holder.tvCharname.text = streamer.ic_name
         }

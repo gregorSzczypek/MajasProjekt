@@ -22,7 +22,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     // hier wird eine AppRepository Instanz erstellt, mit dem Parameter StreamerApi
     private val database = getDatabase(application)
-    private val repository = AppRepository(StreamerApi,database)
+    private val repository = AppRepository(StreamerApi, database)
 
     /**
      * Diese Funktion ruft die Repository-Funktion zum Laden der Streamer
@@ -33,17 +33,23 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         get() = _loading
 
     // hier werden die memes aus dem repository in einer eigenen Variablen gespeichert
-    val streamer = repository.streamer
+    val streamer = repository.streamerList
 
     // zuerst werden alle Einträge aus der Datenbank gelöscht und anschließend wird versucht,
     // den API-Call über das Repository zu starten
+
+    init{
+        loadData()
+    }
     fun loadData(){
         viewModelScope.launch {
+            //gespeicherten Streamer aus Datenbank löschen, um alle Datensätze neue reinzuladen
             try{
                 repository.deleteAllStreamer()
             }catch(e: Exception){
                 Log.e(TAG,"Delete from Database failed: $e")
             }
+            // Streamer aus API in die Datenbank laden
             _loading.value = ApiStatus.LOADING
             try{
                 repository.getStreamer()
