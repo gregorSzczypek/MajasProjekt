@@ -31,9 +31,7 @@ class MainActivity : AppCompatActivity() {
 //    }
 
         if(apiLoading) {
-            binding?.let{
-                it.clAppHeader?.visibility = View.GONE
-            }
+            binding?.clAppHeader?.visibility = View.GONE
         }else
         {
             //Header wird angezeigt, wenn Api fertig geladen

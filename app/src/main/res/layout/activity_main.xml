@@ -28,7 +28,7 @@
                 android:layout_marginBottom="20dp"
                 android:text="@string/app_name"
                 android:textColor="@color/black"
-                android:textSize="24dp"
+                android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -38,6 +38,7 @@
                 app:layout_constraintVertical_bias="0.5" />
 
             <ImageView
+                android:contentDescription="@string/app_name"
                 android:id="@+id/iv_luckyv_logo"
                 android:layout_width="72dp"
                 android:layout_height="64dp"
@@ -57,10 +58,9 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cl_app_header"
-            tools:context=".MainActivity">
+            app:layout_constraintTop_toBottomOf="@+id/cl_app_header">
 
-            <fragment
+            <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/activity_main"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
