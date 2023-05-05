@@ -28,6 +28,7 @@ class LiveAdapter(
         val tvCharname: TextView = itemView.findViewById(R.id.tv_charname)
     }
 
+
     /**
      * hier werden neue ViewHolder erstellt
      */
