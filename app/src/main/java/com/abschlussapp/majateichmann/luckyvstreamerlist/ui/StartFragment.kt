@@ -79,7 +79,7 @@ class StartFragment : Fragment() {
                 //todo
 //                progressBar.visibility = View.GONE
 
-                // TODO: Verarbeite die "streamers" Daten
+                // TODO: Verarbeite die "streamers" Date
 
                 val recyclerViewLive: RecyclerView? = view.findViewById(R.id.rv_streamer_online)
                 recyclerViewLive?.adapter = LiveAdapter(streamers.streamer)
