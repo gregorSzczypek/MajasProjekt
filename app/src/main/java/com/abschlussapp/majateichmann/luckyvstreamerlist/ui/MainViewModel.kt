@@ -18,7 +18,7 @@ enum class ApiStatus {LOADING, ERROR, DONE}
 
 const val TAG = "MainViewModel"
 
-class MainViewModel(application: Application) : AndroidViewModel(application) {
+class MainViewModel(application: Application) : ViewModel() {
 
     // hier wird eine AppRepository Instanz erstellt, mit dem Parameter StreamerApi
     private val database = getDatabase(application)
