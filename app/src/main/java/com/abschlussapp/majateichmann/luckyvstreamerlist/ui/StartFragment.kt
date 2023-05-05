@@ -81,7 +81,7 @@ class StartFragment : Fragment() {
 //                //TODO: navigation von startfragment zu homefragment
 //                val navController = view.findNavController()
 //                if (progressBar.visibility == View.GONE) {
-////                    val navController = view.findNavController()
+//                    val navController = view.findNavController()
 //                    navController.navigate(R.id.action_startFragment_to_homeFragment)
 //                }
 //            } catch (e: Exception) {

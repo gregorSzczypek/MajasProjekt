@@ -27,7 +27,7 @@ private val retrofit = Retrofit.Builder()
 // "LuckyV_StreamerApiService" wird erstellt und definiert, welche Funktionen aufgerufen werden können,
 // um Daten von der LuckyV-Streamer-API abzurufen. In diesem Fall gibt es nur "getStreamerList", die eine Liste von Streamern zurückgibt.
 interface LuckyV_StreamerApiService{
-    @GET("api")
+    @GET("api/")
     // "suspend" bedeutet, dass Funktion asynchron arbeitet
     // (kann pausieren und später fortgesetzt werden, wenn sie auf Daten von der API wartet)
     suspend fun getStreamers(): StreamerList

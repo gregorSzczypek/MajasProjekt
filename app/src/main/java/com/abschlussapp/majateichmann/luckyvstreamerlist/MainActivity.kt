@@ -22,19 +22,29 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         //Wenn API noch nicht geladen: Header nicht sichtbar
-    if(apiLoading) {
-        binding.clAppHeader.visibility = View.GONE
-    }else
-    {
-        //Header wird angezeigt, wenn Api fertig geladen
-        binding.clAppHeader.visibility = View.VISIBLE
-    }
+//    if(apiLoading) {
+//        binding?.clAppHeader?.visibility = View.GONE
+//    }else
+//    {
+//        //Header wird angezeigt, wenn Api fertig geladen
+//        binding?.clAppHeader?.visibility = View.VISIBLE
+//    }
+
+        if(apiLoading) {
+            binding?.let{
+                it.clAppHeader?.visibility = View.GONE
+            }
+        }else
+        {
+            //Header wird angezeigt, wenn Api fertig geladen
+            binding?.clAppHeader?.visibility = View.VISIBLE
+        }
 }
     fun onApiLoading(){
         //ApiLoading wird auf false gesetzt, wenn api fertig geladen
         apiLoading = false
         //Header wird angezeigt, wenn Api fertig geladen
-        binding.clAppHeader.visibility = View.VISIBLE
+        binding?.clAppHeader?.visibility = View.VISIBLE
 
         //todo: Navigiere zu HomeFragment
 //        findNavController(View).navigate(R.id.action_startFragment_to_homeFragment)
