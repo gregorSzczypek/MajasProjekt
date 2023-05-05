@@ -60,7 +60,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cl_app_header">
 
-
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/activity_main"
                 android:layout_width="match_parent"
