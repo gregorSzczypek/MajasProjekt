@@ -3,6 +3,7 @@ package com.abschlussapp.majateichmann.luckyvstreamerlist
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.abschlussapp.majateichmann.luckyvstreamerlist.databinding.ActivityMainBinding
 
 /**
@@ -16,9 +17,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //        setContentView(R.layout.activity_main)
-//        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-    //Wenn API noch nicht geladen: Header nicht sichtbar
+        //todo: binding = null
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+        //Wenn API noch nicht geladen: Header nicht sichtbar
     if(apiLoading) {
         binding.clAppHeader.visibility = View.GONE
     }else
